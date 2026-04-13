@@ -1,54 +1,46 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+
       <div className="container">
 
-        {/* LOGO + NOME */}
-        <Link className="navbar-brand fw-bold text-danger" to="/">
-          🏗️ Alpha Costruzioni
-        </Link>
+        {/* LOGO */}
+        <NavLink className="navbar-brand fw-bold text-danger" to="/">
+          Alpha Costruzioni
+        </NavLink>
 
-        {/* MOBILE BUTTON */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        {/* MENU */}
+        <div className="navbar-nav ms-auto gap-3">
 
-        {/* LINKS */}
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "nav-link text-danger fw-bold" : "nav-link"
+            }
+          >
+            Home
+          </NavLink>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
+          <NavLink
+            to="/chi-siamo"
+            className={({ isActive }) =>
+              isActive ? "nav-link text-danger fw-bold" : "nav-link"
+            }
+          >
+            Chi Siamo
+          </NavLink>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/chi-siamo">
-                Chi siamo
-              </Link>
-            </li>
+          <NavLink
+            to="/progetti"
+            className={({ isActive }) =>
+              isActive ? "nav-link text-danger fw-bold" : "nav-link"
+            }
+          >
+            Progetti
+          </NavLink>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/progetti">
-                Progetti
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link text-danger fw-bold" to="/contatti">
-                Contatti
-              </Link>
-            </li>
-
-          </ul>
         </div>
 
       </div>
