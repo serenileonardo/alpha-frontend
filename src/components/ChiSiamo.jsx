@@ -3,7 +3,7 @@ export default function ChiSiamo() {
     <div className="container my-5">
 
       {/* TITOLO */}
-      <h2 className="text-danger fw-bold mb-4">
+      <h2 className="text-danger fw-bold mb-4 pt-4">
         Chi siamo
       </h2>
 
