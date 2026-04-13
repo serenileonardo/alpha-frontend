@@ -16,16 +16,19 @@ export default function CantiereDetail() {
 
   return (
     <div className="container mt-5">
+      {/* TITOLO */}
       <h1 className="text-danger">{cantiere.nome}</h1>
 
+      {/* INDIRIZZO */}
       <p className="text-muted">{cantiere.indirizzo}</p>
 
       <hr />
 
+      {/* DESCRIZIONE */}
       <h5>Descrizione progetto</h5>
       <p>{cantiere.descrizione}</p>
 
-      {/* SIMULAZIONE FOTO */}
+      {/* FOTO MOCK */}
       <div className="mt-4">
         <h5>Foto cantiere</h5>
 
@@ -35,11 +38,13 @@ export default function CantiereDetail() {
               Foto 1
             </div>
           </div>
+
           <div className="col-md-4">
             <div className="bg-secondary text-white p-5 text-center rounded">
               Foto 2
             </div>
           </div>
+
           <div className="col-md-4">
             <div className="bg-secondary text-white p-5 text-center rounded">
               Foto 3
@@ -48,10 +53,12 @@ export default function CantiereDetail() {
         </div>
       </div>
 
-      {/* WHATSAPP BUTTON */}
+      {/* WHATSAPP DINAMICO */}
       <div className="mt-5">
         <a
-          href="https://wa.me/39XXXXXXXXXX"
+          href={`https://wa.me/393358280109?text=${encodeURIComponent(
+            `Ciao, vorrei informazioni sul cantiere: ${cantiere.indirizzo}`
+          )}`}
           target="_blank"
           rel="noreferrer"
           className="btn btn-success btn-lg"

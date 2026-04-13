@@ -1,30 +1,25 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import MapSection from "./components/MapSection";
-import Footer from "./components/Footer";
-import CantiereDetail from "./pages/CantiereDetail";
+import DefaultLayout from "./layouts/DefaultLayout";
 
-function Home() {
-  return (
-    <>
-      <Hero />
-      <MapSection />
-    </>
-  );
-}
+import Hero from "./components/Hero";
+import ChiSiamo from "./components/ChiSiamo";
+import Progetti from "./components/Progetti";
+import CantiereDetail from "./pages/CantiereDetail";
 
 export default function App() {
   return (
-    <>
-      <Navbar />
+    <Routes>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+      {/* LAYOUT PRINCIPALE */}
+      <Route element={<DefaultLayout />}>
+        
+        <Route path="/" element={<Hero />} />
+        <Route path="/chi-siamo" element={<ChiSiamo />} />
+        <Route path="/progetti" element={<Progetti />} />
         <Route path="/cantiere/:id" element={<CantiereDetail />} />
-      </Routes>
 
-      <Footer />
-    </>
+      </Route>
+
+    </Routes>
   );
 }

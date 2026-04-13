@@ -1,8 +1,11 @@
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { cantieri } from "../data/cantieri";
+import { useNavigate } from "react-router-dom";
 
 export default function MapSection() {
+  const navigate = useNavigate();
+
   return (
     <div className="container mt-5">
       <h2 className="text-danger mb-3">I nostri cantieri a Roma</h2>
@@ -16,23 +19,20 @@ export default function MapSection() {
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
           {cantieri.map((c) => (
-            <Marker key={c.id} position={[c.lat, c.lng]}>
-
-              {/* 🔴 HOVER → ORA INDIRIZZO */}
+            <Marker
+              key={c.id}
+              position={[c.lat, c.lng]}
+              eventHandlers={{
+                click: () => navigate(`/cantiere/${c.id}`)
+              }}
+            >
               <Tooltip direction="top" offset={[0, -10]} opacity={1}>
-                <strong>{c.indirizzo}</strong>
+                <div style={{ textAlign: "center" }}>
+                  <strong>{c.indirizzo}</strong>
+                </div>
               </Tooltip>
-
-              {/* 🔵 CLICK → DETTAGLIO */}
-              <Popup>
-                
-                <p>{c.indirizzo}</p>
-                <small>{c.descrizione}</small>
-              </Popup>
-
             </Marker>
           ))}
-
         </MapContainer>
       </div>
     </div>
